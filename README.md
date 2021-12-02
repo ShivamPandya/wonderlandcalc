@@ -8,7 +8,7 @@
 You can load the extension directly from the GitHub in these simple steps:
 - Download the release or clone the repo
 - Go to : chrome://extensions
-- Enable developer option
+- Enable developer mode
 - Click 'load unpacked'
 - Select the folder in which you cloned or unzipped the extension
 - TADA! 
