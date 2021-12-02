@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html style="min-width:300px;min-height:300px;">
+  <head>
+    <meta charset='UTF-8' />
+    <style>
+      .donate {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        padding: 5px;
+        width: 100%;
+        text-align: center;
+      }
+      .ondate{
+        color: green;
+      }
+    </style>
+  </head>
+  <body class="parent">
+    <div class="container">
+      <center>
+        <h2 class="title">Wonderland Calculator</h2>
+      </center>
+      <div class="main">
+        <div class="basic">
+          <p class="price">  </p>
+          <p class="current"> ⏳ loading </p>
+          <p class="income"> ⏳ loading </p>
+        </div>
+        <div class="adv">
+          <h3 class="datetext" id="datetext">
+            How much I will have on:
+          </h3>
+            <input type="date" name="date" id="date">
+            <button class="calc" id="calc">Calculate</button>
+            <h3>You will have: 
+              <span class="ondate"> Click calculate</span>
+            </h3>
+        </div>
+      </div>
+      <div class="donate">
+        If you like my work, you can donate here: 
+        <span class="address">
+          <a href="#">0xB9950136EeE0404ff354D76ebD1cf147Fa426BD4</a>
+        </span>  
+      </div>
+    </div>
+    <script type="text/javascript" src="popup.js"></script>
+  </body>
+</html>
