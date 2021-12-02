@@ -10,6 +10,10 @@ const address = document.querySelector(".address");
 address.addEventListener('click', () => {
   let copied = address.innerText
   navigator.clipboard.writeText(copied);
+  setTimeout(function(){
+    document.querySelector(".holder").innerHTML = "If you like my work, you can donate here:";
+    }, 3000);
+  document.querySelector(".holder").innerHTML = "Address Copied!";;
 })
 
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
