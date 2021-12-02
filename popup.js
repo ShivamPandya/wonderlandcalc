@@ -5,15 +5,17 @@ let today = new Date((new Date()).valueOf() + 1000*3600*24).toISOString().split(
 document.getElementsByName("date")[0].setAttribute('min', today);
 document.getElementsByName("date")[0].value = today;
 
-const address = document.querySelector(".address");
+const address = document.querySelector(".fox");
 
 address.addEventListener('click', () => {
-  let copied = address.innerText
+  let copied = '0xB9950136EeE0404ff354D76ebD1cf147Fa426BD4'
   navigator.clipboard.writeText(copied);
   setTimeout(function(){
-    document.querySelector(".holder").innerHTML = "If you like my work, you can donate here:";
-    }, 3000);
-  document.querySelector(".holder").innerHTML = "Address Copied!";;
+    document.querySelector(".address").innerHTML = "If you like my work, you can donate here:";
+    document.querySelector(".fox").innerHTML = "🦊";
+  }, 3000);
+  document.querySelector(".address").innerHTML = "Wallet address is copied!";
+  document.querySelector(".fox").innerHTML = "";
 })
 
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
@@ -43,7 +45,6 @@ async function getData(){
 
   function current(results){   
       totalHoldings = results[0][1]*price
-      console.log('Script is running')
       document.querySelector(".current").innerHTML = "<h3>Current Holding: $" + totalHoldings.toFixed(2) + "</h3>";
     }
 
@@ -82,8 +83,13 @@ async function getData(){
         yld = results[0][0];
         staked = results[0][1];
         totalEarned = (((1+yld/100)**(diffDays*3))-1)*staked
-        totalMemos = Number(staked) + Number(totalEarned)  
-        document.querySelector(".ondate").innerHTML = totalMemos.toFixed(4) + ' MEMOs or $'+(totalMemos*price).toFixed(2);
+        totalMemos = Number(staked) + Number(totalEarned) 
+        html = `
+        <ul>
+          <li>` + totalMemos.toFixed(4) + ` MEMOs </l1>
+          <li> $` + (totalMemos*price).toFixed(2) +`</li>
+        </ul>`
+        document.querySelector(".ondate").innerHTML = html;
       }
 
     chrome.tabs.query({active: true}, function(tabs) {
