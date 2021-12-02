@@ -1,4 +1,4 @@
-<img src="banner.png" alt="banner" width="500"/>
+<img src="banner.png" alt="banner" width="700"/>
 
 ### Requirements
 - Currently chromium based browsers are well supported. [ Chrome, Brave, Edge ]
