@@ -12,3 +12,14 @@ You can load the extension directly from the GitHub in these simple steps:
 - Click 'load unpacked'
 - Select the folder in which you cloned or unzipped the extension
 - TADA! 
+
+### This extension DOES NOT:
+- Read or access your wallet
+- Store your data anywhere
+- Record any personal information like IP/Wallet Address
+
+### This extension DOES:
+- Read/Scrap your current MEMO balance from website for the calculation.
+
+### Friendly reminder
+- DO NOT SHARE YOUR SEED PHRASE WITH ANYONE! 
