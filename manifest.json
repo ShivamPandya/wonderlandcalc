@@ -1,7 +1,7 @@
 {
     "name": "Wonderland Calculator",
     "description": "Extension to calculate different matrices of wonderland",
-    "version": "0.1",
+    "version": "1.0.0",
     "manifest_version": 2,
 
     "permissions": [
