@@ -43,6 +43,7 @@ async function getData(){
 
   document.querySelector(".price").innerHTML = "<h3>Current Price: $" + price + "</h3>";
 
+  // CURRENT HOLDINGS
   function current(results){   
       totalHoldings = results[0][1]*price
       document.querySelector(".current").innerHTML = "<h3>Current Holding: $" + totalHoldings.toFixed(2) + "</h3>";
@@ -55,6 +56,7 @@ async function getData(){
     }, current);
   });
 
+  // DAILY INCOME
   function daily (results){
     yld = results[0][0]
     staked = results[0][1]
@@ -70,6 +72,7 @@ async function getData(){
     }, daily);
   });
 
+  // ON SPECIFIC DATE
   document.getElementById("calc").addEventListener("click", wrapper);
 
   function wrapper(){
