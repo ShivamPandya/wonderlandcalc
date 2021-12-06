@@ -1,4 +1,7 @@
-<img src="banner.png" alt="banner" width="700"/>
+<img src="imgs/banner.png" alt="banner" width="700"/>
+
+### Demo:
+<img src="imgs/demo.gif" alt="demo" width="250"/>
 
 ### Requirements
 - Currently chromium based browsers are well supported. [ Chrome, Brave, Edge ]
