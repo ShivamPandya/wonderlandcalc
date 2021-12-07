@@ -18,7 +18,9 @@
       .ondate{
         color: green;
       }
-
+      .download, .fox{
+        cursor: pointer;
+      }
     </style>
   </head>
   <body class="parent">
@@ -32,9 +34,7 @@
           <h4 class="current"> ⏳ loading </h4>
           <h4 class="income"> ⏳ loading </h4>
         </div>
-        <div class="chart">
-          <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-        </div>
+        <p class="downloadTxt"> Download local data: <span class="download">💾</span> </p>
         <div class="adv">
           <h3 class="datetext" id="datetext">
             How much I will have on:
