@@ -4,10 +4,9 @@
     <meta charset='UTF-8' />
     <style>
       body {
-            height: 400px;
+            height: 500px;
             overflow: hidden;
          }
-
       .footer {
         position: fixed;
         left: 0;
@@ -19,6 +18,7 @@
       .ondate{
         color: green;
       }
+
     </style>
   </head>
   <body class="parent">
@@ -28,9 +28,12 @@
       </center>
       <div class="main">
         <div class="basic">
-          <p class="price">  </p>
-          <p class="current"> ⏳ loading </p>
-          <p class="income"> ⏳ loading </p>
+          <h4 class="price">  </h4>
+          <h4 class="current"> ⏳ loading </h4>
+          <h4 class="income"> ⏳ loading </h4>
+        </div>
+        <div class="chart">
+          <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
         </div>
         <div class="adv">
           <h3 class="datetext" id="datetext">
@@ -40,7 +43,7 @@
             <button class="calc" id="calc">Calculate</button>
             <h3>You will have: 
               <span class="ondate"> Click calculate</span>
-            </h3>
+          </h3>
         </div>
       </div>
       <div class="footer">
@@ -52,5 +55,7 @@
       </div>
     </div>
     <script type="text/javascript" src="popup.js"></script>
+    <script type="text/javascript" src="chart.js"></script>
+    <script type="text/javascript" src="graph.js"></script>
   </body>
 </html>

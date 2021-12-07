@@ -5,19 +5,6 @@ let today = new Date((new Date()).valueOf() + 1000*3600*24).toISOString().split(
 document.getElementsByName("date")[0].setAttribute('min', today);
 document.getElementsByName("date")[0].value = today;
 
-const address = document.querySelector(".fox");
-
-address.addEventListener('click', () => {
-  let copied = '0xB9950136EeE0404ff354D76ebD1cf147Fa426BD4'
-  navigator.clipboard.writeText(copied);
-  setTimeout(function(){
-    document.querySelector(".address").innerHTML = "If you like my work, you can donate here:";
-    document.querySelector(".fox").innerHTML = "🦊";
-  }, 3000);
-  document.querySelector(".address").innerHTML = "Wallet address is copied!";
-  document.querySelector(".fox").innerHTML = "";
-})
-
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
   let url = tabs[0].url;
   if (url !=  "https://app.wonderland.money/#/stake"){
@@ -41,35 +28,37 @@ async function getData(){
   let data = await res.json();
   price = data.wonderland.usd
 
-  document.querySelector(".price").innerHTML = "<h3>Current Price: $" + price + "</h3>";
+  document.querySelector(".price").innerHTML = "Current Price: $" + price ;
+
+  function chainFunction (results) {
+    current(results);
+    daily(results)
+  }
 
   // CURRENT HOLDINGS
-  function current(results){   
-      totalHoldings = results[0][1]*price
-      document.querySelector(".current").innerHTML = "<h3>Current Holding: $" + totalHoldings.toFixed(2) + "</h3>";
+  function current(results){  
+      totalHoldings = results[0][1]*price;
+      let todayDate = {};
+      let key = new Date((new Date()).valueOf()).toISOString().split('T')[0];
+      todayDate[key] = Math.floor(totalHoldings);
+      chrome.storage.sync.set(todayDate)
+      document.querySelector(".current").innerHTML = "Current Holding: $" + totalHoldings.toFixed(2);
     }
-
-  chrome.tabs.query({active: true}, function(tabs) {
-    let tab = tabs[0];
-    chrome.tabs.executeScript(tab.id, {
-      file: "data.js"
-    }, current);
-  });
 
   // DAILY INCOME
   function daily (results){
     yld = results[0][0]
     staked = results[0][1]
     dailyPercent = (((1+yld/100)**3)-1)
-    dailyDollars = dailyPercent*staked*price 
-    document.querySelector(".income").innerHTML = "<h3>Daily Income: $" + dailyDollars.toFixed(2) + "</h3>";
+    dailyDollars = dailyPercent*staked*price
+    document.querySelector(".income").innerHTML = "Daily Income: $" + dailyDollars.toFixed(2);
   }
 
   chrome.tabs.query({active: true}, function(tabs) {
     let tab = tabs[0];
     chrome.tabs.executeScript(tab.id, {
       file: "data.js"
-    }, daily);
+    }, chainFunction);
   });
 
   // ON SPECIFIC DATE
@@ -101,7 +90,19 @@ async function getData(){
         file: "data.js",
     }, onDate);
   });
-
   }
-
 }
+
+// Footer Copy Animation
+const address = document.querySelector(".fox");
+
+address.addEventListener('click', () => {
+  let copied = '0xB9950136EeE0404ff354D76ebD1cf147Fa426BD4'
+  navigator.clipboard.writeText(copied);
+  setTimeout(function(){
+    document.querySelector(".address").innerHTML = "If you like my work, you can donate here:";
+    document.querySelector(".fox").innerHTML = "🦊";
+  }, 3000);
+  document.querySelector(".address").innerHTML = "Wallet address is copied!";
+  document.querySelector(".fox").innerHTML = "";
+})
